@@ -1,4 +1,4 @@
-#include "ScenePhysics.hpp"
+#include "PhysicsSystem.hpp"
 
 #include <BulletCollision/BroadphaseCollision/btBroadphaseInterface.h>
 #include <BulletCollision/BroadphaseCollision/btDbvtBroadphase.h>
@@ -24,6 +24,9 @@ ScenePhysics::ScenePhysics() :
 	m_gravity(0.0f, -9.81f, 0.0f),
 	m_airDensity(1.2f)
 {
+	GetFilter().Require<Rigidbody>();
+	GetFilter().Require<KinematicCharacter>();
+	
 	m_dynamicsWorld->setGravity(Collider::Convert(m_gravity));
 	m_dynamicsWorld->getDispatchInfo().m_enableSPU = true;
 	m_dynamicsWorld->getSolverInfo().m_minimumSolverBatchSize = 128;
