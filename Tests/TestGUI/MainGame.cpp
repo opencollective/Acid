@@ -3,6 +3,7 @@
 #include <iostream>
 #include <Files/Files.hpp>
 #include <Files/FileSystem.hpp>
+#include <Audio/Sound.hpp>
 #include <Devices/Mouse.hpp>
 #include <Graphics/Graphics.hpp>
 #include <Resources/Resources.hpp>
@@ -17,6 +18,9 @@ int main(int argc, char **argv)
 	// Creates the engine.
 	auto engine = std::make_unique<Engine>(argv[0]);
 	engine->SetGame(new MainGame());
+
+	Sound sound = Sound("Sounds/Music/Hiitori-Bocchi.ogg");
+	sound.Play(true);
 
 	// Runs the game loop.
 	int32_t exitCode = engine->Run();

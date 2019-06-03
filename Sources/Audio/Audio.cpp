@@ -1,12 +1,7 @@
 #include "Audio.hpp"
 
-#if defined(ACID_BUILD_MACOS)
-#include <OpenAL/al.h>
-#include <OpenAL/alc.h>
-#else
-#include <al.h>
-#include <alc.h>
-#endif
+#include <AL/al.h>
+#include <AL/alc.h>
 #include "Files/FileSystem.hpp"
 #include "Scenes/Scenes.hpp"
 

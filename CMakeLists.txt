@@ -52,15 +52,6 @@ find_package(Threads REQUIRED)
 # Finds and loads Vulkan, env "VULKAN_SDK" must be set
 find_package(Vulkan REQUIRED)
 
-# OpenAL must be installed on the system, env "OPENALDIR" must be set
-find_package(OpenAL REQUIRED)
-if(OPENAL_FOUND AND NOT TARGET OpenAL::OpenAL)
-	add_library(OpenAL::OpenAL UNKNOWN IMPORTED)
-	set_target_properties(OpenAL::OpenAL PROPERTIES
-			IMPORTED_LOCATION "${OPENAL_LIBRARY}"
-			INTERFACE_INCLUDE_DIRECTORIES "${OPENAL_INCLUDE_DIR}")
-endif()
-
 # Used to track if we're using ONLY system libs
 # Prevents errors with EXPORT
 set(_ACID_ALL_SYSTEM_LIBS true)
@@ -114,6 +105,24 @@ if(NOT Freetype_FOUND)
 
 	# Used in target_link_libraries()
 	set(FREETYPE_LIBRARIES "freetype")
+endif()
+
+find_package(OpenALSoft QUIET)
+if(NOT OPENALSOFT_FOUND)
+	set(_ACID_ALL_SYSTEM_LIBS false)
+	FetchContent_Declare(openal
+			GIT_REPOSITORY http://repo.or.cz/openal-soft.git
+			GIT_TAG master
+			)
+	FetchContent_GetProperties(openal)
+	if(NOT openalL_POPULATED)
+		foreach(_openal_option "ALSOFT_DLOPEN" "ALSOFT_WERROR" "ALSOFT_UTILS" "ALSOFT_NO_CONFIG_UTIL" "ALSOFT_EXAMPLES" 
+                "ALSOFT_TESTS" "ALSOFT_CONFIG" "ALSOFT_HRTF_DEFS" "ALSOFT_AMBDEC_PRESETS" "ALSOFT_INSTALL")
+			set(${_openal_option} OFF CACHE INTERNAL "")
+		endforeach()
+		FetchContent_Populate(openal)
+		add_subdirectory(${openal_SOURCE_DIR} ${openal_BINARY_DIR})
+	endif()
 endif()
 
 find_package(glfw3 QUIET)

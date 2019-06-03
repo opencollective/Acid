@@ -1,10 +1,6 @@
 ﻿#include "Sound.hpp"
 
-#if defined(ACID_BUILD_MACOS)
-#include <OpenAL/al.h>
-#else
-#include <al.h>
-#endif
+#include <AL/al.h>
 #include "Scenes/Entity.hpp"
 
 namespace acid

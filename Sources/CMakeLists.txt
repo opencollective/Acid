@@ -67,7 +67,7 @@ target_link_libraries(Acid
 		PRIVATE
 		# More IMPORTED
 		glfw
-		OpenAL::OpenAL
+		OpenAL
 		# Not IMPORTED targets, requires manual includes handling
 		# When built locally from submodules, these are merely the names..
 		# of the library targets that exist in-scope, else they're set..
