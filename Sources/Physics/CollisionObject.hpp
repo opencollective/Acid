@@ -2,7 +2,6 @@
 
 #include "Helpers/Delegate.hpp"
 #include "Scenes/Entity.hpp"
-#include "Scenes/Component.hpp"
 #include "Colliders/Collider.hpp"
 #include "Force.hpp"
 
@@ -16,7 +15,7 @@ class Frustum;
 /**
  * @brief Represents a object in a scene effected by physics.
  */
-class ACID_EXPORT CollisionObject : public Component {
+class ACID_EXPORT CollisionObject {
 public:
 	/**
 	 * Creates a new collision object.

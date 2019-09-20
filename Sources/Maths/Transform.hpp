@@ -9,7 +9,7 @@ namespace acid {
 /**
  * @brief Holds position, rotation, and scale components.
  */
-class ACID_EXPORT Transform : public Component {
+class ACID_EXPORT Transform : public Component::Registrar<Transform> {
 public:
 	/**
 	 * Creates a new transform.

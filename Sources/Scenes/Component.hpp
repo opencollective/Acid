@@ -1,14 +1,55 @@
 #pragma once
 
+#include "Files/Node.hpp"
 #include "Helpers/Delegate.hpp"
 
 namespace acid {
 class Entity;
 
+template<typename Base>
+class ComponentFactory {
+public:
+	using FuncType = std::function<std::unique_ptr<Base>()>;
+	using RegistryMap = std::unordered_map<std::string, FuncType>;
+
+	static std::unique_ptr<Base> Create(const std::string &name) {
+		auto it = Registry().find(name);
+		return it == Registry().end() ? nullptr : it->second();
+	}
+
+	static void FindName(Node &node, Base *component) {
+		//node << *component;
+	}
+
+	static void Decode(const std::string &name, const Node &node, Base *component) {
+		//node >> *component;
+	}
+	
+	static void Encode(const std::string &name, Node &node, Base *component) {
+		//node << *component;
+	}
+
+	static RegistryMap &Registry() {
+		static RegistryMap impl;
+		return impl;
+	}
+
+	template<typename T>
+	class Registrar : public Base {
+	protected:
+		static bool Register(const std::string &name) {
+			Registry()[name] = []() -> std::unique_ptr<Base> {
+				return std::make_unique<T>();
+			};
+			return true;
+		}
+	};
+};
+
 /**
  * @brief Class that represents a functional component attached to entity.
  */
-class ACID_EXPORT Component : public Observer {
+class ACID_EXPORT Component : public ComponentFactory<Component>, public Observer {
 	friend class Entity;
 public:
 	virtual ~Component() = default;

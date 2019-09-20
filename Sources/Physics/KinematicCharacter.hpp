@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Maths/Vector3.hpp"
+#include "Scenes/Component.hpp"
 #include "Colliders/Collider.hpp"
 #include "CollisionObject.hpp"
 
@@ -11,7 +12,7 @@ namespace acid {
 /**
  * @brief Represents a kinematic character controller.
  */
-class ACID_EXPORT KinematicCharacter : public CollisionObject {
+class ACID_EXPORT KinematicCharacter : public Component::Registrar<KinematicCharacter>, public CollisionObject {
 public:
 	/**
 	 * Creates a new kinematic character controller.

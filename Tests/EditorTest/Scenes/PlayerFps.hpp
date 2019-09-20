@@ -9,7 +9,7 @@
 using namespace acid;
 
 namespace test {
-class PlayerFps : public Component {
+class PlayerFps : public Component::Registrar<PlayerFps> {
 public:
 	PlayerFps();
 

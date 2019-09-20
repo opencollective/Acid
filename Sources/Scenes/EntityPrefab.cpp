@@ -69,8 +69,8 @@ const EntityPrefab &operator>>(const EntityPrefab &entityPrefab, Entity &entity)
 			continue;
 		}
 
-		if (auto component = Scenes::Get()->GetComponentRegister().Create(property.GetName())) {
-			Scenes::Get()->GetComponentRegister().Decode(property.GetName(), property, component);
+		if (auto component = Component::Create(property.GetName())) {
+			Component::Decode(property.GetName(), property, component.get());
 			entity.AddComponent(component);
 		}
 	}
@@ -89,7 +89,7 @@ EntityPrefab &operator<<(EntityPrefab &entityPrefab, const Entity &entity) {
 		}
 
 		auto &property = entityPrefab.m_file->GetNode()->AddProperty(*componentName, {});
-		Scenes::Get()->GetComponentRegister().Encode(*componentName, property, component.get());
+		Component::Encode(*componentName, property, component.get());
 	}
 
 	return entityPrefab;

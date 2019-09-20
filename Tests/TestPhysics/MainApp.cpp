@@ -91,16 +91,6 @@ MainApp::MainApp() :
 	World::Register(ModuleStage::Always);
 	//Shadows::Deregister();
 
-	// Registers components.
-	auto &componentRegister = Scenes::Get()->GetComponentRegister();
-	componentRegister.Add<HeightDespawn>("heightDespawn");
-	componentRegister.Add<NameTag>("nameTag");
-	componentRegister.Add<PlayerFps>("playerFps");
-	componentRegister.Add<CelestialBody>("celestialBody");
-	componentRegister.Add<SkyboxCycle>("skyboxCycle");
-	componentRegister.Add<MaterialTerrain>("materialTerrain");
-	componentRegister.Add<Terrain>("terrain");
-
 	// Sets values to modules.
 	Window::Get()->SetTitle("Test Physics");
 	Window::Get()->SetIcons({

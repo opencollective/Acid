@@ -6,7 +6,7 @@
 class btConvexHullShape;
 
 namespace acid {
-class ACID_EXPORT ColliderConvexHull : public Collider {
+class ACID_EXPORT ColliderConvexHull : public Component::Registrar<ColliderConvexHull>, public Collider {
 public:
 	explicit ColliderConvexHull(const std::vector<float> &pointCloud = {}, const Transform &localTransform = {});
 

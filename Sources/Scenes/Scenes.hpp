@@ -3,7 +3,6 @@
 #include "Engine/Engine.hpp"
 #include "Models/ModelRegister.hpp"
 #include "Scene.hpp"
-#include "ComponentRegister.hpp"
 #include "SceneStructure.hpp"
 
 namespace acid {
@@ -27,12 +26,6 @@ public:
 	 * @param scene The new scene.
 	 */
 	void SetScene(std::unique_ptr<Scene> &&scene) { m_scene = std::move(scene); }
-
-	/**
-	 * Gets the component register used by the engine. The register can be used to register/deregister component types.
-	 * @return The component register.
-	 */
-	ComponentRegister &GetComponentRegister() { return m_componentRegister; }
 
 	/**
 	 * Gets the model register used by the engine. The register can be used to register/deregister model types.
@@ -67,7 +60,6 @@ public:
 private:
 	std::unique_ptr<Scene> m_scene;
 
-	ComponentRegister m_componentRegister;
 	ModelRegister m_modelRegister;
 };
 }

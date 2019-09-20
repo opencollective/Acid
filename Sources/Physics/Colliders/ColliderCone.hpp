@@ -5,7 +5,7 @@
 class btConeShape;
 
 namespace acid {
-class ACID_EXPORT ColliderCone : public Collider {
+class ACID_EXPORT ColliderCone : public Component::Registrar<ColliderCone>, public Collider {
 public:
 	explicit ColliderCone(float radius = 1.0f, float height = 1.0f, const Transform &localTransform = {});
 

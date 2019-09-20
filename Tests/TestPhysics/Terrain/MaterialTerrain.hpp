@@ -2,11 +2,12 @@
 
 #include <Materials/Material.hpp>
 #include <Graphics/Images/Image2d.hpp>
+#include <Scenes/Component.hpp>
 
 using namespace acid;
 
 namespace test {
-class MaterialTerrain : public Material {
+class MaterialTerrain : public Component::Registrar<MaterialTerrain>, public Material {
 public:
 	explicit MaterialTerrain(std::shared_ptr<Image2d> imageR = nullptr, std::shared_ptr<Image2d> imageG = nullptr);
 

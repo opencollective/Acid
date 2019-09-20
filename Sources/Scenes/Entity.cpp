@@ -51,7 +51,7 @@ void Entity::RemoveComponent(Component *component) {
 
 void Entity::RemoveComponent(const std::string &name) {
 	m_components.erase(std::remove_if(m_components.begin(), m_components.end(), [&](std::unique_ptr<Component> &c) {
-		auto componentName = Scenes::Get()->GetComponentRegister().FindName(c.get());
+		auto componentName = Component::FindName(c.get());
 		return componentName && name == *componentName;
 	}), m_components.end());
 }

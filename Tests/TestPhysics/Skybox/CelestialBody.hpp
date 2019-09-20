@@ -7,7 +7,7 @@
 using namespace acid;
 
 namespace test {
-class CelestialBody : public Component {
+class CelestialBody : public Component::Registrar<CelestialBody> {
 public:
 	enum class Type {
 		Sun = 0,

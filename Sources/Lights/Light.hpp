@@ -8,7 +8,7 @@ namespace acid {
 /**
  * @brief Component that represents a point light.
  */
-class ACID_EXPORT Light : public Component {
+class ACID_EXPORT Light : public Component::Registrar<Light> {
 public:
 	/**
 	 * Creates a new point light.

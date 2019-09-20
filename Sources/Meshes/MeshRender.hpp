@@ -5,7 +5,7 @@
 #include "Mesh.hpp"
 
 namespace acid {
-class ACID_EXPORT MeshRender : public Component {
+class ACID_EXPORT MeshRender : public Component::Registrar<MeshRender> {
 public:
 	void Start() override;
 	void Update() override;

@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "Maths/Vector3.hpp"
+#include "Scenes/Component.hpp"
 #include "Scenes/Entity.hpp"
 #include "CollisionObject.hpp"
 
@@ -11,7 +12,7 @@ namespace acid {
 /**
  * @brief Represents a object in a scene effected by physics.
  */
-class ACID_EXPORT Rigidbody : public CollisionObject {
+class ACID_EXPORT Rigidbody : public Component::Registrar<Rigidbody>, public CollisionObject {
 public:
 	/**
 	 * Creates a new rigidbody.

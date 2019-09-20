@@ -1,9 +1,10 @@
 ﻿#pragma once
 
+#include "Scenes/Component.hpp"
 #include "Emitter.hpp"
 
 namespace acid {
-class ACID_EXPORT EmitterLine : public Emitter {
+class ACID_EXPORT EmitterLine : public Component::Registrar<EmitterLine>, public Emitter {
 public:
 	explicit EmitterLine(float length = 1.0f, const Vector3f &axis = Vector3f::Right);
 

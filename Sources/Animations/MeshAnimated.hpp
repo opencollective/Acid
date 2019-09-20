@@ -13,7 +13,7 @@ namespace acid {
 /**
  * @brief Class that represents an animated armature with a skin mesh.
  **/
-class ACID_EXPORT MeshAnimated : public Component {
+class ACID_EXPORT MeshAnimated : public Component::Registrar<MeshAnimated> {
 public:
 	explicit MeshAnimated(std::filesystem::path filename = "");
 
@@ -34,6 +34,8 @@ public:
 	static constexpr uint32_t MaxWeights = 3;
 
 private:
+	static bool registered;
+	
 	Animator m_animator;
 
 	std::filesystem::path m_filename;

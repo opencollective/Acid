@@ -7,7 +7,7 @@
 using namespace acid;
 
 namespace test {
-class SkyboxCycle : public Component {
+class SkyboxCycle : public Component::Registrar<SkyboxCycle> {
 public:
 	explicit SkyboxCycle(bool enableFog = true, bool enableRotation = false);
 

@@ -1,9 +1,10 @@
 ﻿#pragma once
 
+#include "Scenes/Component.hpp"
 #include "Emitter.hpp"
 
 namespace acid {
-class ACID_EXPORT EmitterPoint : public Emitter {
+class ACID_EXPORT EmitterPoint : public Component::Registrar<EmitterPoint>, public Emitter {
 public:
 	EmitterPoint();
 

@@ -9,7 +9,7 @@ namespace acid {
 /**
  * @brief Component that is used to render a entity as a shadow.
  */
-class ACID_EXPORT ShadowRender : public Component {
+class ACID_EXPORT ShadowRender : public Component::Registrar<ShadowRender> {
 public:
 	ShadowRender();
 

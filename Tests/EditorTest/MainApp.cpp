@@ -79,10 +79,6 @@ MainApp::MainApp() :
 	// Registers modules.
 	//Engine::Get()->RemoveModule<Shadows>();
 
-	// Registers components.
-	auto &componentRegister = Scenes::Get()->GetComponentRegister();
-	componentRegister.Add<PlayerFps>("playerFps");
-
 	// Sets values to modules.
 	//Window::Get()->SetTitle("Test Physics");
 	//Window::Get()->SetIcons({ "Icons/Icon-16.png", "Icons/Icon-24.png", "Icons/Icon-32.png", "Icons/Icon-48.png", "Icons/Icon-64.png",
@@ -95,10 +91,6 @@ MainApp::MainApp() :
 MainApp::~MainApp() {
 	Log::Out("[Game] Destructor\n");
 	//Files::Get()->ClearSearchPath();
-
-	// Deregisters components.
-	auto &componentRegister = Scenes::Get()->GetComponentRegister();
-	componentRegister.Remove("playerFps");
 
 	//Renderer::Get()->SetManager(nullptr);
 	Scenes::Get()->SetScene(nullptr);

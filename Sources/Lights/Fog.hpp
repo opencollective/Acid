@@ -8,7 +8,7 @@ namespace acid {
 /**
  * @brief Component that represents a 3d fog.
  */
-class ACID_EXPORT Fog : public Component {
+class ACID_EXPORT Fog : public Component::Registrar<Fog> {
 public:
 	/**
 	 * Creates a new hazy fog.

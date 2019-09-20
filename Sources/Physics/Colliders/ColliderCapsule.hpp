@@ -5,7 +5,7 @@
 class btCapsuleShape;
 
 namespace acid {
-class ACID_EXPORT ColliderCapsule : public Collider {
+class ACID_EXPORT ColliderCapsule : public Component::Registrar<ColliderCapsule>, public Collider {
 public:
 	explicit ColliderCapsule(float radius = 0.5f, float height = 1.0f, const Transform &localTransform = {});
 

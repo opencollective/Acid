@@ -8,7 +8,7 @@ namespace acid {
 /**
  * @brief Component that represents a model/mesh.
  */
-class ACID_EXPORT Mesh : public Component {
+class ACID_EXPORT Mesh : public Component::Registrar<Mesh> {
 public:
 	/**
 	 * Creates a new mesh component with a model.

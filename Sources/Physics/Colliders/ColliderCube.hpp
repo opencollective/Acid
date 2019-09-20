@@ -5,7 +5,7 @@
 class btBoxShape;
 
 namespace acid {
-class ACID_EXPORT ColliderCube : public Collider {
+class ACID_EXPORT ColliderCube : public Component::Registrar<ColliderCube>, public Collider {
 public:
 	explicit ColliderCube(const Vector3f &extents = Vector3f(1.0f), const Transform &localTransform = {});
 

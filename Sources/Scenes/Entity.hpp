@@ -42,10 +42,8 @@ public:
 		T *alternative = nullptr;
 
 		for (const auto &component : m_components) {
-			auto casted = dynamic_cast<T *>(component.get());
-
-			if (casted) {
-				if (allowDisabled && !casted->IsEnabled()) {
+			if (auto casted = dynamic_cast<T *>(component.get())) {
+				if (allowDisabled && !component->IsEnabled()) {
 					alternative = casted;
 					continue;
 				}
@@ -68,15 +66,13 @@ public:
 		std::vector<T *> components;
 
 		for (const auto &component : m_components) {
-			auto casted = dynamic_cast<T *>(component.get());
-
-			if (casted) {
-				if (allowDisabled && !casted->IsEnabled()) {
-					components.emplace_back(casted);
+			if (dynamic_cast<T *>(component.get())) {
+				if (allowDisabled && !component->IsEnabled()) {
+					components.emplace_back(component);
 					continue;
 				}
 
-				components.emplace_back(casted);
+				components.emplace_back(component);
 			}
 		}
 

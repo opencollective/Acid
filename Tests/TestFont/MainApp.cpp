@@ -56,9 +56,6 @@ MainApp::MainApp() :
 
 	// Registers modules.
 
-	// Registers components.
-	auto &componentRegister = Scenes::Get()->GetComponentRegister();
-
 	// Sets values to modules.
 	Window::Get()->SetTitle("Test Font");
 	Window::Get()->SetIcons({

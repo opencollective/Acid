@@ -2,7 +2,6 @@
 
 #include "Maths/Transform.hpp"
 #include "Gizmos/Gizmos.hpp"
-#include "Scenes/Component.hpp"
 
 class btCollisionShape;
 class btVector3;
@@ -13,7 +12,7 @@ namespace acid {
 /**
  * @brief Class that represents a physics shape.
  */
-class ACID_EXPORT Collider : public Component {
+class ACID_EXPORT Collider {
 public:
 	/**
 	 * Creates a new collider.
@@ -24,7 +23,7 @@ public:
 
 	virtual ~Collider();
 
-	void Update() override;
+	void Update();
 
 	/**
 	 * Gets the collision shape defined in this collider.

@@ -9,8 +9,9 @@ namespace acid {
 /**
  * @brief Class that represents a playable sound.
  */
-class ACID_EXPORT Sound : public Component {
+class ACID_EXPORT Sound : public Component::Registrar<Sound> {
 public:
+	Sound();
 	explicit Sound(const std::string &filename, const Audio::Type &type = Audio::Type::General, bool begin = false,
 		bool loop = false, float gain = 1.0f, float pitch = 1.0f);
 
@@ -51,7 +52,7 @@ private:
 	Vector3f m_velocity;
 
 	Audio::Type m_type;
-	float m_gain;
-	float m_pitch;
+	float m_gain = 1.0f;
+	float m_pitch = 1.0f;
 };
 }

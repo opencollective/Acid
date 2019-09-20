@@ -5,7 +5,7 @@
 class btSphereShape;
 
 namespace acid {
-class ACID_EXPORT ColliderSphere : public Collider {
+class ACID_EXPORT ColliderSphere : public Component::Registrar<ColliderSphere>, public Collider {
 public:
 	explicit ColliderSphere(float radius = 0.5f, const Transform &localTransform = {});
 

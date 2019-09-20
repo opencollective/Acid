@@ -29,7 +29,7 @@ void Collider::SetLocalTransform(const Transform &localTransform) {
 	m_localTransform = localTransform;
 
 	auto collisionObject = GetEntity()->GetComponent<CollisionObject>();
-
+	
 	if (collisionObject) {
 		collisionObject->SetChildTransform(this, m_localTransform);
 	}

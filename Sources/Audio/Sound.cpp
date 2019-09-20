@@ -9,6 +9,10 @@
 #include "Scenes/Entity.hpp"
 
 namespace acid {
+Sound::Sound() {
+	alGenSources(1, &m_source);
+}
+
 Sound::Sound(const std::string &filename, const Audio::Type &type, bool begin, bool loop, float gain, float pitch) :
 	m_buffer(SoundBuffer::Create(filename)),
 	m_type(type),
@@ -125,6 +129,8 @@ const Node &operator>>(const Node &node, Sound &sound) {
 	node["type"].Get(sound.m_type);
 	node["gain"].Get(sound.m_gain);
 	node["pitch"].Get(sound.m_pitch);
+	alSourcei(sound.m_source, AL_BUFFER, sound.m_buffer->GetBuffer());
+	Audio::CheckAl(alGetError());
 	return node;
 }
 

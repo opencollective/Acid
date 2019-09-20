@@ -92,11 +92,11 @@ Scene1::Scene1() :
 					}
 
 					for (auto &component : entity->GetComponents()) {
-						auto componentName = Scenes::Get()->GetComponentRegister().FindName(component.get());
+						auto componentName = Component::FindName(component.get());
 
 						if (componentName) {
 							auto child = entityNode.AddProperty(*componentName, {});
-							Scenes::Get()->GetComponentRegister().Encode(*componentName, child, component.get());
+							Component::Encode(*componentName, child, component.get());
 						}
 					}
 				}
